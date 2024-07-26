@@ -1,6 +1,3 @@
-# pypoly
-Python library for managing polynomials
-
 Hola! Bienvenido a Polinomios, el notebook que te permitirá hacer cuentas con polinomios (dividir, multiplicar, sumar, restar, hallar el resto) y muchas cosas más!
 
 ***Nota: Para poder usar este notebook tenés que apretar el simbolito de "Play" a la izquierda del código de abajo. Eso ejecuta el código.***
@@ -107,7 +104,7 @@ Como ya vimos, los objetos ```Polinomio```se puede imprimir por pantalla utiliza
 
 También existen las siguientes funciones y métodos:
 
-**mcd()**:
+**mcd(f: Polinomio, g: Polinomio)**:
 
 Devuelve el Mayor Común Divisor entre dos polinomios:
 
@@ -151,11 +148,63 @@ Ya documentada.
 
 # Próximamente:
 
-**.graph()**
+**.graph(inicio = -1, final = 1, res = 50)**
+
+Abre un gráfico de la función en matplotlib (requiere tener instalada la librería matplotlib). Acepta los argumentos opcionales `inicio`, `final` y `res`.
+
+`inicio` determina la $x$ donde comienza el display del gráfico. `final` determina la $x$ donde termina el display. Res determina la resolución del gráfico.
+
+```
+f = Polinomio(2,3,5)
+
+f.graph(-1, 4, 50)
+
+# Output: *Se abrirá un gráfico con 
+la función f desde -1 hasta 4 con resolución = 50*
+```
 
 **.raices()**
 
-**.eval()**
+Devuelve las raíces de un polinomio de grado 1 o 2.
+Devuelve un objeto `tuple` si hay más de una raíz, un `int` si hay una sola raíz y `None` si no tiene raíces.
+
+```
+f = Polinomio(1,-1,-1)
+
+print(f.raices())
+
+# Output: (1.618033988749895, -0.6180339887498949)
+```
+
+**.eval(x: float)**
+
+Devuelve el valor de f(x) evaluada en `x`
+
+```
+f = Polinomio(2,3,-1,-5)
+
+print(f.eval(7))
+
+# Output: 821
+```
+
+**.d_dx(n: int)**
+
+Devuelve la n-ésima derivada de un polinomio
+
+```
+f = Polinomio(2, 3, -1, -5)
+
+g = f.d_dx(2)
+
+print(g)
+
+# Output: 12X + 6
+
+g.eval(2)
+
+# Output: 21
+```
 
 # A codear.
 
