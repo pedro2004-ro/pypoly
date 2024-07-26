@@ -14,6 +14,9 @@ class Polinomio:
             self.__coeficientes = tupla
             self.__grado = len(tupla)-1
 
+    def get_coef(self):
+        return self.__coeficientes
+
     def __eq__(self, value: object) -> bool:
         return self.__coeficientes == value.__coeficientes
 
@@ -223,6 +226,26 @@ class Polinomio:
                 out_str += "+ " + out[i]
 
         return out_str
+    
+    def d_dx(self, n=1):
+        if n == 0:
+            return self
+        
+        grado_inicial = self.grado()
+        nuevo_grado = grado_inicial - 1
+    
+        coeficientes = self.get_coef()
+        nuevos_coef = [0]*grado_inicial
+
+        for i in range(len(nuevos_coef)):
+            nuevos_coef[i] = coeficientes[i] * (grado_inicial - i)
+
+        res = Polinomio(tuple(nuevos_coef))
+
+        if n == 1:
+            return res
+        else:
+            return res.d_dx(n - 1)
 
 def mcd(poli1: Polinomio, poli2: Polinomio):
     f = poli1.copy()
