@@ -228,8 +228,12 @@ class Polinomio:
         return out_str
     
     def d_dx(self, n=1):
+        n = int(n)
         if n == 0:
             return self
+        
+        if n < 0:
+            raise ValueError("Argumento n debe ser mayor a 0")
         
         grado_inicial = self.grado()
         nuevo_grado = grado_inicial - 1
